@@ -1,0 +1,45 @@
+/* ================================
+    RESET Y CONFIGURACIÓN BASE
+================================== */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px; /* Tamaño de fuente base para todo el sitio (se puede ajustar) */
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background-color);
+  font-family: "Cal Sans", sans-serif;
+  font-size: 1rem; /* Usar rem para el tamaño de fuente base del body */
+  color: var(--white);
+  font-weight: 400;
+  font-style: normal; /* Usar 'normal' como base, luego aplicar 'italic' donde sea necesario */
+  overflow-x: hidden;
+}
+
+/* ================================
+    CONTAINER
+================================== */
+.container {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 0 1rem; /* Ajustar el padding horizontal */
+  position: relative; /* Para permitir posicionamiento absoluto de elementos hijos */
+  width: 100%;
+}
+
+/* ================================
+    SECTION
+================================== */
+section {
+  padding: 2rem 0; /* Ajustar el padding vertical para las secciones */
+  width: 100%;
+  margin: 0 auto;
+}

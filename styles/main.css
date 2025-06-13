@@ -1,0 +1,24 @@
+/* ================================
+   Archivo principal de estilos
+================================== */
+
+/* ======== Importación de archivos de utilidades ======== */
+@import "./utils/variables.css";
+
+/* ======== Importación de estilos base y reset ======== */
+@import "./components/reset.css";
+
+/* ======== Importación de componentes ======== */
+@import "./components/buttons.css";
+@import "./components/reveal.css";
+@import "./components/animations.css";
+
+/* ======== Importación de layouts ======== */
+@import "./layouts/topbar.css";
+@import "./layouts/header.css";
+@import "./layouts/hero.css";
+@import "./layouts/about.css";
+@import "./layouts/product.css";
+@import "./layouts/contact.css";
+@import "./layouts/chatbox.css";
+@import "./layouts/footer.css";

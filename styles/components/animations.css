@@ -1,0 +1,60 @@
+/* ==========================================================================
+     ANIMACIONES
+========================================================================== */
+
+/* Nueva clase que se activará al quitar el hover */
+.rotate-on-peak {
+  animation: rotateIcon 0.3s ease-in-out;
+}
+
+/* Animación de "sacudida" del icono */
+@keyframes shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  20%,
+  60% {
+    transform: translateX(-3px);
+  }
+  40%,
+  80% {
+    transform: translateX(3px);
+  }
+}
+
+/*Animación de Flotación*/
+
+@keyframes floatAnimation {
+  0% {
+    transform: translateY(-3.5px);
+  }
+  50% {
+    transform: translateY(3.5px);
+  }
+  100% {
+    transform: translateY(-3.5px);
+  }
+}
+
+/* Animación del desplazamiento del gradiente de fondo */
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes rotateIcon {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

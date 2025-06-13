@@ -1,0 +1,167 @@
+----------------------------------------------------------
+/* ================================
+   TOPBAR
+================================== */
+
+.topbar {
+  background-color: #222222;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  width: 100%;
+}
+
+.container-topbar {
+  max-width: 1750px;
+  margin: 0 auto;
+  padding: 0.5rem 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  font-family: Arial, Helvetica, sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  color: white;
+}
+
+/* Simular columnas personalizadas como Bootstrap */
+.topbar-section {
+  display: flex;
+  align-items: center;
+  flex: 1; /* Por defecto todos ocupan el mismo espacio */
+  min-width: auto;
+  margin-bottom: 0.2rem;
+  font-size: 16px; /* Tamaño de fuente base para la topbar */
+}
+
+.address {
+  flex: 4;
+  justify-content: center;
+}
+
+.schedule {
+  flex: 4;
+  justify-content: center;
+}
+
+.phone {
+  flex: 2;
+  justify-content: center;
+}
+
+.social {
+  flex: 2;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.topbar-link {
+  display: flex;
+  align-items: center;
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  gap: 0.2rem;
+  font-size: inherit; /* Hereda el tamaño de fuente del contenedor */
+}
+
+.topbar-link {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.topbar-section.social {
+  display: flex;
+  gap: 0.7rem;
+}
+
+.topbar-section.social a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.topbar-section.social a:hover {
+  color: var(--primary-color);
+}
+
+/* Hover para el enlace de la dirección */
+.topbar-section.address .topbar-link:hover {
+  color: brown; /* O el color que prefieras para el hover de la dirección */
+}
+
+.topbar-section.address .topbar-link:hover i {
+  color: brown;
+}
+
+/* Hover para el enlace del teléfono */
+.topbar-section.phone .topbar-link:hover {
+  color: #00ff3c; /* Verde para el hover del teléfono */
+}
+
+.topbar-section.phone .topbar-link:hover i {
+  color: #28a745;
+}
+
+.topbar-section.social a:nth-child(1):hover {
+  color: #25d366; /* Whatsapp */
+}
+
+.topbar-section.social a:nth-child(2):hover {
+  color: #e4405f; /* Instagram */
+}
+
+.topbar-section.social a:nth-child(3):hover {
+  color: #1877f2; /* Facebook */
+}
+
+.topbar-section.social a:nth-child(4):hover {
+  color: #1da1f2; /* Twitter */
+}
+
+.topbar-section.social a:nth-child(5):hover {
+  color: #0077b5; /* Linkedin */
+}
+
+.topbar-section.social a:nth-child(6):hover {
+  color: #e60023; /* Pinterest */
+}
+
+/* --- ESTILOS PARA EL HORARIO */
+
+.slider-clock .slider-item {
+  display: inline;
+  opacity: 0; /* Oculto por defecto */
+}
+
+.slider-clock .slider-item.active {
+  display: inline; /* Solo el activo se muestra */
+  transition: opacity 0.5s ease-in-out;
+  opacity: 1; /* El activo es visible */
+  z-index: 1; /* Asegura que el activo esté por encima de los demás */
+}
+
+/* ================================
+    DISEÑO RESPONSIVO - TOPBAR
+================================== */
+
+/* Escritorios pequeños y tablets horizontales (<= 992px) */
+
+@media (max-width: 1200px) {
+  .topbar-section {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 992px) {
+  .topbar-section {
+    font-size: 10px;
+  }
+}
+
+@media (max-width: 768px) {
+  .topbar {
+    display: none;
+  }
+}

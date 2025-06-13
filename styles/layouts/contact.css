@@ -1,0 +1,390 @@
+/* ================================
+   SECCIÓN DE CONTACTO  
+================================== */
+
+.section-contact {
+  background: linear-gradient(180deg, #1a1a1a, #333333);
+  position: relative;
+  z-index: 3; /* Asegura que la sección esté por encima de la ola */
+  padding: 1rem 1rem;
+}
+
+.section-contact-header {
+  text-align: center;
+}
+
+.section-contact-header h2 {
+  color: #bddd0a;
+  margin-top: 1.5rem;
+  margin-bottom: 2rem;
+  font-weight: bold;
+  font-size: 3rem;
+}
+
+.section-contact-header p {
+  color: #ccc;
+  font-size: 20px;
+  margin-bottom: 0rem;
+}
+
+.contact-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.contact-item h4 {
+  color: #31c400;
+  font-weight: bold;
+  font-size: 25px;
+}
+
+.contact-item p {
+  color: #fff;
+  font-size: 20px;
+  margin-bottom: 0rem;
+}
+
+.contact-divider {
+  border-color: #929292;
+  margin: 20px;
+}
+
+.social-links {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* centramos el ul */
+  gap: 2rem; /* espacio entre iconos */
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.social-links a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #d2d2d2;
+  box-shadow: var(--shadow);
+  transition: var(--transition);
+  text-decoration: none;
+  color: var(--secondary-color);
+  position: relative;
+  overflow: visible;
+}
+
+.social-links a i {
+  font-size: 1.5rem;
+  color: #ffffff;
+  transition: color var(--transition);
+  vertical-align: middle;
+  margin: 0; /* <-- asegúrate de esto */
+  padding: 0; /* <-- esto también */
+  line-height: 1; /* <-- ayuda a centrar verticalmente */
+}
+
+.social-links a:hover {
+  transform: translateY(-8px); /* Levanta ligeramente el contenedor */
+}
+
+.social-links a:hover i::before {
+  animation: flip 0.5s ease;
+}
+
+.social-links a:hover i {
+  color: var(--white);
+  transform: scale(1.2);
+}
+
+.social-links a .tooltip {
+  position: absolute;
+  bottom: 50px; /* Ajusta la posición según sea necesario */
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(0, 0, 0, 0.75); /* Fondo oscuro semitransparente */
+  color: var(--white);
+  padding: 0.4rem 0.8rem;
+  border-radius: 5px;
+  font-size: 0.8rem;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  white-space: nowrap;
+  pointer-events: none; /* Evita interferencias con el hover */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  z-index: 10; /* Asegura que esté por encima */
+}
+
+.social-links a:hover .tooltip {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(-5px); /* Animación suave hacia arriba */
+}
+
+/* Flechita decorativa */
+.social-links a .tooltip::after {
+  content: "";
+  position: absolute;
+  top: 100%; /* Posicionada justo debajo del tooltip */
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 6px;
+  border-style: solid;
+  border-color: rgba(0, 0, 0, 0.8) transparent transparent transparent;
+}
+
+.social-links.contact li:nth-child(1) a {
+  background-color: rgba(37, 211, 102, 0.8); /* Verde WhatsApp más pálido */
+}
+
+.social-links.contact li:nth-child(3) a {
+  background-color: rgba(24, 119, 242, 0.8); /* Azul Facebook más pálido */
+}
+
+.social-links.contact li:nth-child(4) a {
+  background-color: rgba(29, 161, 242, 0.8); /* Celeste Twitter más pálido */
+}
+
+.social-links.contact li:nth-child(5) a {
+  background-color: rgba(10, 102, 194, 0.8); /* Azul LinkedIn más pálido */
+}
+
+.social-links.contact li:nth-child(6) a {
+  background-color: rgba(230, 0, 35, 0.8); /* Rojo Pinterest más pálido */
+}
+
+.social-links.contact li:nth-child(2) a {
+  background: radial-gradient(
+    circle at 30% 107%,
+    rgba(253, 244, 151, 0.8) 0%,
+    rgba(253, 244, 151, 0.8) 5%,
+    rgba(253, 89, 73, 0.8) 45%,
+    rgba(214, 36, 159, 0.8) 60%,
+    rgba(40, 90, 235, 0.8) 90%
+  );
+}
+
+/* Colores personalizados usando nth-child */
+.social-links li:nth-child(1) a:hover {
+  background-color: #25d366; /* Verde WhatsApp */
+  color: white;
+  box-shadow: 0 0 20px 5px rgba(37, 211, 102, 0.5); /* Brillo verde */
+}
+
+/* Cambiar el color del tooltip según el nth-child */
+.social-links li:nth-child(1) a:hover .tooltip {
+  background-color: #25d366; /* Verde WhatsApp */
+}
+
+/* Ajuste visual individual de íconos */
+.social-links li:nth-child(1) i {
+  margin-left: 3px; /* WhatsApp */
+}
+
+.social-links li:nth-child(2) a::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle at 30% 107%,
+    #fdf497 0%,
+    #fdf497 5%,
+    #fd5949 45%,
+    #d6249f 60%,
+    #285aeb 90%
+  );
+  opacity: 0; /* Inicialmente invisible */
+  transition: opacity 0.5s ease; /* La opacidad se animará */
+}
+
+.social-links li:nth-child(2) a:hover {
+  color: white; /* El color del texto cambia al hacer hover */
+  box-shadow: 0 0 20px 5px rgba(253, 89, 73, 0.5); /* Brillo multicolor */
+}
+
+.social-links li:nth-child(2) a:hover::before {
+  opacity: 1; /* El pseudo-elemento se hace completamente visible suavemente */
+}
+
+.social-links li:nth-child(2) a:hover .tooltip {
+  background-color: #fd5949; /* Multicolor Instagram */
+}
+
+.social-links li:nth-child(2) i {
+  margin-left: 2px; /* Instagram */
+}
+
+.social-links li:nth-child(3) a:hover {
+  background-color: #1877f2; /* Azul Facebook */
+  color: white;
+  box-shadow: 0 0 20px 5px rgba(24, 119, 242, 0.5); /* Brillo azul */
+}
+
+.social-links li:nth-child(3) a:hover .tooltip {
+  background-color: #1877f2; /* Azul Facebook */
+}
+
+.social-links li:nth-child(3) i {
+  margin-left: 2px; /* Facebook */
+}
+
+.social-links li:nth-child(4) a:hover {
+  background-color: #1da1f2; /* Celeste Twitter */
+  color: white;
+  box-shadow: 0 0 20px 5px rgba(29, 161, 242, 0.5); /* Brillo celeste */
+}
+
+.social-links li:nth-child(4) a:hover .tooltip {
+  background-color: #1da1f2; /* Celeste Twitter */
+}
+
+.social-links li:nth-child(4) i {
+  margin-left: 3px; /* Twitter */
+}
+
+.social-links li:nth-child(5) a:hover {
+  background-color: #0a66c2; /* Azul LinkedIn */
+  color: white;
+  box-shadow: 0 0 20px 5px rgba(10, 102, 194, 0.5); /* Brillo azul */
+}
+
+.social-links li:nth-child(5) a:hover .tooltip {
+  background-color: #0a66c2; /* Azul LinkedIn */
+}
+
+.social-links li:nth-child(5) i {
+  margin-left: 3.7px; /* LinkedIn */
+}
+
+.social-links li:nth-child(6) a:hover {
+  background-color: #e60023; /* Rojo Pinterest */
+  color: white;
+  box-shadow: 0 0 20px 5px rgba(230, 0, 35, 0.2); /* Brillo rojo */
+}
+
+.social-links li:nth-child(6) a:hover .tooltip {
+  background-color: #e60023; /* Rojo Pinterest */
+}
+
+.social-links li:nth-child(6) i {
+  margin-left: 2px; /* Pinterest */
+}
+
+@keyframes flip {
+  0% {
+    transform: scaleX(1);
+  }
+  50% {
+    transform: scaleX(-1);
+  }
+  100% {
+    transform: scaleX(1);
+  }
+}
+
+/*Formulario*/
+
+.contact-form-container {
+  background: linear-gradient(135deg, #21590f 0%, #339313 100%);
+  border-radius: 10px;
+  box-shadow: var(--shadow);
+  padding: 3rem;
+  animation: floatAnimation 4s ease-in-out infinite; /* Animación de flotación */
+}
+
+.contact-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.contact-form h3 {
+  text-align: center;
+  color: #fff;
+  font-weight: 100;
+  font-size: 32px;
+  margin-bottom: 0.4rem;
+}
+
+.contact-form h3::after {
+  content: "";
+  animation: blink 1s infinite;
+  font-style: normal;
+  margin-left: 0.3rem;
+  display: inline-block;
+  width: 0.4px;
+  height: 3.2rem;
+  background-color: black;
+  vertical-align: middle; /* Alinear verticalmente */
+}
+
+@keyframes blink {
+  0%,
+  50% {
+    opacity: 1;
+  }
+  51%,
+  100% {
+    opacity: 0;
+  }
+}
+
+.form-row {
+  display: flex;
+  gap: 1rem;
+}
+
+.form-row .form-group {
+  flex: 1; /* cada form-group ocupa 50% */
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 0.8rem;
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 0.3rem;
+  font-weight: 500;
+  font-size: 1.1rem;
+  color: #fff;
+}
+
+.form-text {
+  color: #fff;
+  font-size: 14px;
+}
+
+.form-control {
+  width: 100%;
+  padding: 0.45rem;
+  outline: none;
+  border-radius: 10px;
+  border: 2px solid #6a6a6a;
+  background-color: #fff;
+  font-weight: 500;
+  font-style: italic;
+  font-size: 1.1rem;
+  transition: var(--transition);
+}
+
+.form-control:focus {
+  border-color: #161616;
+  box-shadow: 0 0 25px 10px rgba(115, 255, 0, 0.2);
+}
+
+.form-submit {
+  display: flex;
+  justify-content: center;
+}

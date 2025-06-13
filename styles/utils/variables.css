@@ -1,0 +1,12 @@
+/* ================================
+   VARIABLES GLOBALES
+================================== */
+:root {
+  --primary-color: #be2a2a;
+  --secondary-color: #bddd0a;
+  --background-color: #333333;
+  --gradient-header-bg-2: linear-gradient(135deg, #168ddc 70%, #2ecc71 100%);
+  --white: #ffffff;
+  --shadow: 0 6px 15px rgba(0, 0, 0, 0.7);
+  --transition: all 0.3s ease;
+}

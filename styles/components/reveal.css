@@ -1,0 +1,86 @@
+/* ================================
+   REVEAL ANIMATION
+================================== */
+
+/* Base Reveal */
+.reveal {
+  opacity: 0;
+  transform: none;
+  transition: opacity 1.7s ease, transform 1.5s ease;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: none;
+}
+
+/* Reveal subiendo (desde abajo hacia arriba) */
+.reveal-up {
+  opacity: 0;
+  transform: translateY(55px);
+  transition: opacity 1.3s ease, transform 1s ease;
+}
+
+.reveal-up.active {
+  opacity: 1;
+  transform: translateY(0px);
+}
+
+/* Reveal bajando (desde arriba hacia abajo) */
+.reveal-down {
+  opacity: 0;
+  transform: translateY(-55px);
+  transition: opacity 1.3s ease, transform 1s ease;
+}
+
+.reveal-down.active {
+  opacity: 1;
+  transform: translateY(0px);
+}
+
+/* Reveal entrando desde la izquierda */
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-35px);
+  transition: opacity 1.3s ease, transform 1s ease;
+}
+
+.reveal-left.active {
+  opacity: 1;
+  transform: translateX(0px);
+}
+
+/* Reveal entrando desde la derecha */
+.reveal-right {
+  opacity: 0;
+  transform: translateX(35px);
+  transition: opacity 1.3s ease, transform 1s ease;
+}
+
+.reveal-right.active {
+  opacity: 1;
+  transform: translateX(0px);
+}
+
+/* Reveal con fade + zoom pequeño */
+.reveal-zoom {
+  opacity: 0;
+  transform: scale(0.8px);
+  transition: opacity 2.1s ease, transform 1s ease;
+}
+
+.reveal-zoom.active {
+  opacity: 1;
+  transform: scale(1px);
+}
+
+/* Reveal con fade + zoom grande */
+.reveal-zoom-large {
+  opacity: 0;
+  transform: scale(1.2px);
+  transition: opacity 2.1s ease, transform 1s ease;
+}
+.reveal-zoom-large.active {
+  opacity: 1;
+  transform: scale(1);
+}

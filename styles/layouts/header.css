@@ -1,0 +1,336 @@
+/* ================================
+   HEADER Y NAVEGACIÓN
+================================== */
+.header {
+  background-color: transparent;
+  box-shadow: var(--box-shadow);
+  position: absolute; /*sticky + top 0 para mantener arriba al hacer scroll*/
+  width: 100%;
+  z-index: 1000;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 0; /* Espacio alrededor del contenido */
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.7rem;
+  padding-left: 1rem; /* o margen si prefieres margin-left */
+}
+
+.logo-icon {
+  height: 70px;
+  width: 70px;
+  object-fit: contain;
+}
+
+/* ================================
+   HEADER Y NAVEGACIÓN
+================================== */
+/* ... (tu CSS existente del header) ... */
+
+.logo-text {
+  font-family: "Cal Sans", sans-serif;
+  font-weight: 600;
+  font-style: italic;
+  font-size: 24px;
+  color: var(--white);
+  text-transform: uppercase;
+  letter-spacing: 0.1rem; /* Espaciado sutil entre letras */
+  vertical-align: middle; /* Asegura que el texto esté alineado verticalmente con la imagen */
+  display: inline-block; /* Para que los spans se comporten en línea y podamos aplicarles la animación */
+}
+
+.nav-menu {
+  display: flex;
+  gap: 2rem;
+  font-size: 18px;
+}
+
+.nav-menu a {
+  color: var(--white);
+  font-weight: bold;
+  text-transform: uppercase;
+  text-decoration: none;
+  letter-spacing: 1px;
+  transition: color 0.3s ease;
+  position: relative;
+}
+
+.nav-menu a::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: var(--secondary-color);
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.3s ease;
+}
+
+.nav-menu a:hover {
+  color: var(--secondary-color);
+}
+
+.nav-menu a:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+/* menu-toogle */
+/* .menu-toggle {
+  font-size: 30px;
+  cursor: pointer;
+  color: white;
+  display: none;
+  margin-left: auto; 
+  transition: color 0.3s ease;
+} */
+
+.menu-toggle-container {
+  display: none;
+}
+
+.menu-togglev2 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 55px;
+  height: 55px;
+  border-radius: 10px;
+  box-shadow: 0px 10px 20px 0 rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  gap: 7px;
+}
+
+.menu-togglev2 .line {
+  position: relative;
+  width: 40px;
+  height: 5px;
+  background-color: #c2c2c2;
+  border-radius: 10px;
+}
+
+.menu-togglev2 .line:nth-child(1) {
+  top: 0;
+  transform: rotate(0);
+  transition: top 0.2s ease, transform 0.4s ease;
+}
+
+.menu-togglev2 .line:nth-child(2) {
+  opacity: 1;
+  visibility: visible;
+  transition: all 0.2s ease;
+}
+
+.menu-togglev2 .line:nth-child(3) {
+  top: 0;
+  transform: rotate(0);
+  transition: top 0.2s ease, transform 0.4s ease;
+}
+
+.menu-togglev2.active .line:nth-child(1) {
+  top: 13px;
+  transform: rotate(45deg);
+}
+
+.menu-togglev2.active .line:nth-child(2) {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.menu-togglev2.active .line:nth-child(3) {
+  top: -11px;
+  transform: rotate(-45deg);
+}
+
+/* ================================
+    HEADER DINAMICO STICKY
+================================== */
+
+.header.slidedown {
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  background: linear-gradient(
+    180deg,
+    rgba(26, 26, 26, 0.95) 0%,
+    rgba(51, 51, 51, 0.95) 100%
+  );
+  backdrop-filter: blur(10px);
+
+  animation: slideDown 0.4s forwards;
+}
+
+.header.slideup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: linear-gradient(
+    180deg,
+    rgba(26, 26, 26, 0.95) 0%,
+    rgba(51, 51, 51, 0.95) 100%
+  );
+  backdrop-filter: blur(10px);
+  animation: slideUp 0.4s forwards;
+  z-index: 1000;
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-100%);
+  }
+}
+
+/* ================================
+    DISEÑO RESPONSIVO - HEADER
+================================== */
+
+@media (max-width: 768px) {
+  /* .nav-menu {
+    display: none;
+    flex-direction: column;
+    background-color: rgba(0, 0, 0, 0.9);
+    position: absolute;
+    top: 100%;
+    width: 100%;
+    right: 0;
+    text-align: center;
+    align-items: center;
+    padding: 1rem;
+    gap: 1rem;
+  }
+
+  .nav-menu.active {
+    display: flex;
+  }
+
+  .nav-menu a {
+    padding: 0.5rem 0;
+    width: 100%;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+  }
+
+  .nav-menu a::after {
+    display: none;
+  } */
+
+  /* Transformar el nav-menu en un menú desplegable */
+  .nav-menu {
+    display: flex; /* Sigue siendo flex para organizar elementos */
+    flex-direction: column; /* Apila los enlaces verticalmente */
+    background-color: rgba(
+      26,
+      26,
+      26,
+      0.95
+    ); /* Fondo oscuro semitransparente para el menú */
+    backdrop-filter: blur(8px); /* Efecto de desenfoque */
+    position: absolute; /* Posicionamiento absoluto respecto al header */
+    top: 100%; /* Empieza justo debajo del header */
+    width: 100%; /* Ocupa todo el ancho */
+    left: 0; /* Alineado a la izquierda */
+    text-align: center; /* Centra el texto */
+    align-items: center; /* Centra los elementos */
+    padding: 1rem 0; /* Padding vertical para el menú */
+    gap: 0; /* Elimina el gap horizontal */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* Sombra para profundidad */
+    overflow: hidden; /* Oculta el contenido que excede la altura */
+
+    /* Animación de deslizamiento de arriba hacia abajo */
+    max-height: 0; /* Altura inicial cero para que esté oculto */
+    opacity: 0; /* Transparencia inicial */
+    visibility: hidden; /* Oculta visualmente y no permite interacciones */
+    transition: max-height 0.5s ease-out, opacity 0.4s ease-out,
+      visibility 0.4s ease-out; /* Transiciones suaves */
+    z-index: 999; /* Asegura que esté debajo del toggle pero sobre el contenido */
+  }
+
+  /* Cuando el menú está activo (abierto) */
+  .nav-menu.active {
+    max-height: 500px; /* Suficiente altura para mostrar todos los enlaces */
+    opacity: 1; /* Completamente visible */
+    visibility: visible; /* Habilita las interacciones */
+    transition: max-height 0.5s ease-in, opacity 0.4s ease-in,
+      visibility 0.4s ease-in;
+  }
+
+  /* Estilos para los enlaces dentro del menú móvil */
+  .nav-menu a {
+    padding: 0.75rem 1rem; /* Más padding para facilitar el clic */
+    width: 100%; /* Ocupa todo el ancho */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15); /* Separador sutil entre enlaces */
+    color: var(--white); /* Color de texto en móvil */
+    text-align: center; /* Centra el texto */
+    font-size: 1.1rem; /* Un poco más grande para mejor legibilidad */
+  }
+
+  .nav-menu a:last-child {
+    border-bottom: none; /* Elimina el borde del último enlace */
+  }
+
+  .nav-menu a::after {
+    display: none; /* Ocultar la línea inferior de hover en el menú móvil */
+  }
+
+  .nav-menu a:hover {
+    background-color: rgba(
+      255,
+      255,
+      255,
+      0.1
+    ); /* Ligero fondo al pasar el ratón */
+    color: var(--secondary-color); /* Color al pasar el ratón */
+  }
+
+  /* .menu-toggle {
+    display: block;
+  } */
+
+  .menu-toggle-container {
+    display: block;
+  }
+
+  .header {
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(
+      180deg,
+      rgba(26, 26, 26, 0.95) 0%,
+      rgba(51, 51, 51, 0.95) 100%
+    );
+    backdrop-filter: blur(10px);
+    z-index: 1000; /* Asegura que el header esté por encima de otros elementos */
+  }
+
+  .navbar {
+    padding: 1rem; /* Ajustar padding movil */
+  }
+}

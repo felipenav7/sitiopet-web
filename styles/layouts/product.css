@@ -1,0 +1,217 @@
+/* ================================
+   SECCIÓN DE PRODUCTOS
+================================== */
+.product-section {
+  background: linear-gradient(180deg, #333333, #1a1a1a);
+  text-align: center;
+  padding: 1rem 1rem;
+  z-index: 3;
+}
+
+.product-section h2 {
+  color: #bddd0a;
+  margin-top: 1.5rem;
+  margin-bottom: 2rem;
+  text-align: center;
+  font-weight: bold;
+  font-size: 40px;
+}
+
+.product-section p {
+  color: #ccc;
+  font-size: 20px;
+  margin-bottom: 0rem;
+}
+
+/* ===== gallery-product */
+
+.gallery-product {
+  display: flex;
+  width: 100%;
+  height: 600px;
+}
+
+.product-item {
+  width: 0;
+  position: relative;
+  flex-grow: 1;
+  overflow: hidden;
+  transition: 0.5s ease;
+  background-size: cover;
+  background-position: start center;
+  background-repeat: no-repeat;
+
+  opacity: 1; /* <- OJO: esto afecta a todo el div, incluidas letras si las hay */
+}
+
+.product-item:nth-child(1) {
+  background-image: url("/assets/images/productosuno.png");
+}
+
+.product-item:nth-child(2) {
+  background-image: url("/assets/images/productosdos.png");
+}
+
+.product-item:nth-child(3) {
+  background-image: url("/assets/images/productostres.png");
+}
+
+.product-item:nth-child(4) {
+  background-image: url("/assets/images/productosdos.png");
+}
+
+.product-item:hover {
+  width: 150px;
+  z-index: 1;
+}
+
+.product-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(20, 20, 20, 0.7);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  text-align: center;
+  padding: 1rem;
+  transition: 0.4s ease-in-out;
+}
+
+.product-item:hover .product-overlay {
+  opacity: 1;
+}
+
+.product-overlay h3 {
+  font-size: 40px;
+  color: #bddd0a;
+  margin-bottom: 0.5rem;
+}
+
+.product-overlay p {
+  font-size: 22px;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin-bottom: 5rem;
+  align-items: stretch;
+}
+
+.product-card {
+  background-color: #fff;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  height: 100%;
+}
+
+.product-card:hover {
+  transform: translateY(-7px);
+  box-shadow: 0 20px 35px rgba(0, 0, 0, 0.4);
+}
+
+.product-image {
+  width: 100%;
+  overflow: hidden;
+}
+
+.product-image img {
+  width: 100%;
+  height: 300px; /* Ajustar la altura según sea necesario */
+  object-fit: cover;
+  display: block;
+}
+
+.product-image img:hover {
+  transform: scale(1.2);
+  transition: 0.5s ease-in-out;
+}
+
+.product-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  flex: 1;
+  justify-content: space-between;
+}
+
+.product-info h3 {
+  font-size: 24px;
+  color: var(--primary-color);
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.product-info p {
+  font-size: 20px;
+  color: #000;
+  margin-bottom: 0.5rem;
+  flex-grow: 1;
+}
+
+/* visibilidad */
+
+/* Visibilidad por defecto: mostrar galería, ocultar grid */
+.gallery-product {
+  display: flex;
+  transition: all 0.5s ease;
+}
+
+.product-grid {
+  display: none;
+  transition: all 0.5s ease;
+}
+
+/* ================================
+   DISEÑO RESPONSIVO
+================================== */
+
+@media (max-width: 992px) {
+  .gallery-product {
+    display: none;
+  }
+
+  .product-grid {
+    display: grid;
+  }
+}
+
+@media (max-width: 768px) {
+  .product-section h2 {
+    font-size: 1.8rem;
+  }
+
+  .product-section p {
+    font-size: 1rem;
+  }
+
+  .product-icon {
+    font-size: 3rem;
+  }
+
+  .product-title {
+    font-size: 1.3rem;
+  }
+
+  .product-description {
+    font-size: 0.95rem;
+  }
+
+  .animated-button {
+    font-size: 0.9rem;
+    padding: 0.5rem 1rem;
+  }
+}

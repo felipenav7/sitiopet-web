@@ -1,0 +1,356 @@
+/* ==========================================================================
+      Chat de Whatsapp (Estilizado)
+========================================================================== */
+
+/* ================ BOTÓN FLOTANTE DE WHATSAPP ================ */
+
+.whatsapp-float {
+  position: fixed;
+  overflow: hidden;
+  bottom: 20px;
+  right: 20px;
+  width: 3.7rem;
+  height: 3.7rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #25d366;
+  color: white;
+  font-size: 1.9rem;
+  text-decoration: none;
+  border-radius: 50%;
+  z-index: 1000;
+  transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1); /* Transición suave para las propiedades que cambian */
+  animation: floatAnimation 4s ease-in-out infinite; /* Animación de flotación */
+}
+
+.whatsapp-float::before {
+  content: "";
+  position: absolute;
+  width: 120%;
+  height: 120%;
+  background: linear-gradient(45deg, #003614, #25d366);
+  animation: gradientShift 2s linear infinite; /* Animación del gradiente */
+  transform: rotate(45deg) translateY(100%);
+  transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  opacity: 1;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.whatsapp-float i {
+  position: relative;
+  z-index: 2;
+  margin-left: 3px;
+  transition: transform 0.3s ease;
+  line-height: 1;
+}
+
+.whatsapp-float:hover {
+  /* Animación al pasar el ratón: se eleva ligeramente */
+  transform: translateY(-8px);
+  box-shadow: 0 15px 25px rgba(37, 211, 102, 0.5);
+}
+
+.whatsapp-float:hover i {
+  /* Animación de "sacudida" del icono al hacer hover */
+  animation: shake 0.5s linear;
+}
+
+.whatsapp-float.clicked::before {
+  /* Fondo con gradiente para el efecto animado */
+  background: linear-gradient(45deg, #25d366, #003614);
+  background-size: 300% 100%;
+  transform: rotate(45deg) translateY(0); /* Posición final del ::before al hacer hover */
+  opacity: 1;
+}
+
+/* ================ Contenido principal ================ */
+.whatsapp-widget {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+}
+
+.whatsapp-chatbox {
+  position: absolute;
+  bottom: 80px;
+  right: 0;
+  width: 350px;
+  height: 400px;
+  background-color: #f5f5f5;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  visibility: hidden;
+  font-family: sans-serif;
+  font-style: normal;
+  letter-spacing: 0.4px;
+  transform: translateY(20px);
+  transition: all 0.3s ease;
+}
+
+.whatsapp-chatbox.active {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* Cabezera del chat */
+.chatbox-header {
+  background-color: #075e54;
+  padding: 6px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+}
+
+.profile {
+  display: flex;
+  align-items: center;
+  margin-left: 12px;
+}
+
+.profile-image {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-right: 10px;
+  vertical-align: middle;
+}
+
+.profile-image img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  object-position: center 60%;
+}
+
+.profile-info h3 {
+  font-size: 16px;
+  margin-bottom: 7px;
+  margin-top: 16px;
+}
+
+.profile-info p {
+  font-size: 12px;
+  margin-top: 0px;
+  display: flex;
+  align-items: center;
+}
+
+.outline-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  background-color: #25d366;
+  border-radius: 50%;
+  margin-right: 5px;
+  vertical-align: middle;
+}
+
+.close-btn {
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  transition: background-color 0.2s;
+}
+
+.close-btn i {
+  font-size: 1.5rem;
+  padding: 0.5rem;
+  border-radius: 50%;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  padding: 0; /* 👈 importante: eliminar el padding */
+  margin: 0;
+  vertical-align: middle;
+  line-height: 1;
+}
+
+.close-btn:hover {
+  transform: scale(1.2);
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Contenido del chat */
+.chatbox-content {
+  flex: 1;
+  padding: 15px;
+  overflow-y: auto;
+  background-color: #e5ddd5;
+  background-image: url("https://web.whatsapp.com/img/bg-chat-tile-light_a4be4c74ff255e17a41f5f16470d6bf3.png");
+  background-repeat: repeat;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Alinea los items al inicio (izquierda) por defecto */
+}
+
+/* Estilos para los mensajes */
+.message {
+  display: flex;
+  flex-direction: column;
+  max-width: 75%;
+  margin: 2.5px;
+  padding: 0;
+  align-self: flex-start; /* Cada mensaje empieza a la izquierda por defecto */
+}
+
+.message-text {
+  padding: 10px 14px;
+  border-radius: 10px;
+  position: relative;
+}
+
+.message-text p {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.4;
+  color: #000;
+}
+
+.message-time {
+  align-self: flex-end;
+  font-size: 10px;
+  color: #777;
+  margin-top: 2px;
+  margin-right: 6px;
+}
+
+/* Mensaje recibido */
+.message.received {
+  align-self: flex-start;
+}
+
+.message.received .message-text {
+  background-color: white;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+/* Flechita para mensajes recibidos */
+.message.received .message-text::before {
+  content: "";
+  position: absolute;
+  top: 0rem;
+  left: -10px;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 16px 16px 16px 0;
+  border-color: transparent white transparent transparent;
+}
+
+/* Mensaje enviado (usuario simulado) */
+.message.sent {
+  align-self: flex-end;
+}
+
+.message.sent .message-text {
+  background-color: #dcf8c6;
+  border: 1px solid #c4e8b1;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+/* Flechita para mensajes enviados */
+.message.sent .message-text::before {
+  content: "";
+  position: absolute;
+  top: 0rem;
+  right: -10px;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 16px 0 16px 16px;
+  border-color: transparent transparent transparent #dcf8c6;
+}
+
+/* Pie del chat */
+.chatbox-footer {
+  display: flex;
+  padding: 10px;
+  background-color: #f0f0f0;
+  border-top: 1px solid #ddd;
+}
+
+.send-message {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #25d366;
+  color: white;
+  text-decoration: none;
+  border-radius: 25px;
+  font-weight: bold;
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.4;
+  padding: 12px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.send-message:hover {
+  background-color: #128c7e;
+  transform: translateY(0);
+}
+
+.send-message i {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2px;
+  margin-left: 8px;
+}
+
+/* Animación escritura whatsapp*/
+.typing-dots span {
+  display: inline-block;
+  color: black;
+  margin: 0 2px;
+  font-size: 18px;
+  animation: blink_chatbox 1s infinite;
+}
+
+.typing-dots span:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.typing-dots span:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes blink_chatbox {
+  0%,
+  100% {
+    opacity: 0.2;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+/* ================================
+   DISEÑO RESPONSIVO - CHATBOX
+================================== */
+@media (max-width: 768px) {
+  .whatsapp-float {
+    font-size: 1.5rem;
+    width: 3rem;
+    height: 3rem;
+  }
+
+  .whatsapp-widget {
+    right: 5px;
+    transform: translateX(-50%) translateY(20px);
+  }
+}
