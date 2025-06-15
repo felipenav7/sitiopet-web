@@ -46,6 +46,14 @@
   padding: 30px;
   background: linear-gradient(180deg, #1a1a1a1a, #681a1a);
   margin-top: 60px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+/* Estado hover para el logo */
+.about-logo:hover {
+  transform: scale(1.05) translateY(-5px); /* Ligeramente más grande */
+  box-shadow: 0 0 25px rgba(189, 221, 10, 0.7); /* Sombra con el color del borde y mayor intensidad */
+  border-color: #e0ff40; /* Un verde/amarillo más brillante para el borde */
 }
 
 .about-logo img {

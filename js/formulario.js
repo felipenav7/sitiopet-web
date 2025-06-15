@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const submitButton = document.getElementById("submit-button");
   const buttonText = submitButton.querySelector(".button-text");
   // Si tienes un icono dentro del botón y quieres controlarlo, déjalo. Si no, puedes eliminar esta línea.
-  const buttonIcon = submitButton.querySelector(".button-icon");
+  const buttonIcon = submitButton.querySelector(".button-icon"); // Asegúrate de que este elemento exista en tu HTML si lo usas
   const spinner = submitButton.querySelector(".spinner-border"); // Asume que estás usando clases de Bootstrap para el spinner
   const loadingText = submitButton.querySelector(".loading-text");
   const formMessages = document.getElementById("form-messages"); // El div para mostrar mensajes de estado
@@ -30,7 +30,6 @@ document.addEventListener("DOMContentLoaded", function () {
     // 2. Ocultar el texto y el icono del botón, y mostrar el spinner y el texto de carga.
     buttonText.classList.add("d-none");
     if (buttonIcon) {
-      // Verificamos si el icono existe antes de intentar ocultarlo
       buttonIcon.classList.add("d-none");
     }
     spinner.classList.remove("d-none");
@@ -42,7 +41,6 @@ document.addEventListener("DOMContentLoaded", function () {
     // --- FIN: Control de UI durante el envío ---
 
     // Recopilamos los datos de los campos del formulario.
-    // Los nombres de las propiedades (name, phone, email, textarea) deben coincidir con los placeholders {{...}} en tu plantilla de EmailJS.
     const formData = {
       name: document.getElementById("name").value,
       phone: document.getElementById("phone").value,
@@ -51,32 +49,36 @@ document.addEventListener("DOMContentLoaded", function () {
     };
 
     // Enviamos el correo usando EmailJS.
-    // send(serviceID, templateID, templateParams)
     emailjs
       .send(SERVICE_ID, TEMPLATE_ID, formData)
       .then(
         function () {
           // Si el envío fue exitoso:
-          formMessages.textContent =
-            "¡Mensaje enviado con éxito! Te contactaremos pronto.";
-          formMessages.classList.add("alert", "alert-success"); // Añade clases para un estilo de éxito (Bootstrap)
+          formMessages.innerHTML = `
+            <div class="alert alert-success d-flex align-items-center justify-content-center" role="alert">
+                <span>¡Mensaje enviado con éxito! Te contactaremos pronto.</span> <i class="bi bi-check-circle-fill me-2"></i>
+            </div>
+          `;
 
-          // ** MODIFICADO: Deshabilitar todos los campos del formulario **
-          const formElements = form.elements; // Obtiene todos los elementos del formulario (inputs, textareas, selects, etc.)
+          // formMessages.textContent =
+          //   "¡Mensaje enviado con éxito! Te contactaremos pronto.";
+          // formMessages.classList.add("alert", "alert-success"); // Añade clases para un estilo de éxito (Bootstrap)
+
+          // Deshabilitar todos los campos del formulario
+          const formElements = form.elements;
           for (let i = 0; i < formElements.length; i++) {
             const element = formElements[i];
-            // Deshabilita todos los elementos excepto los que son de tipo 'submit'
-            // El botón de submit ya está deshabilitado por `submitButton.disabled = true;` al inicio.
             if (element.type !== "submit") {
               element.disabled = true;
             }
           }
 
-          // ** ELIMINADO: form.reset(); ** (Para que los valores se mantengan)
-
-          // El botón de envío se mantendrá deshabilitado y en estado "Enviando..."
-          // para forzar la recarga de la página si se quiere enviar otro.
-          // No necesitamos habilitarlo de nuevo en caso de éxito.
+          // ** NUEVO: Cambiar el texto del botón a "Enviado" y ocultar spinner/texto de carga **
+          buttonText.textContent = "Enviado"; // Cambia el texto del botón
+          buttonText.classList.remove("d-none"); // Muestra el texto "Enviado"
+          spinner.classList.add("d-none"); // Oculta el spinner
+          loadingText.classList.add("d-none"); // Oculta el texto "Enviando..."
+          // El botón ya está deshabilitado, y queremos que siga así.
         },
         function (error) {
           // Si hubo un error durante el envío:
@@ -85,21 +87,22 @@ document.addEventListener("DOMContentLoaded", function () {
             "Hubo un error al enviar tu mensaje. Por favor, inténtalo de nuevo más tarde.";
           formMessages.classList.add("alert", "alert-danger"); // Añade clases para un estilo de error (Bootstrap)
 
-          // ** MODIFICADO: Restaurar UI solo en caso de error para permitir reintentar **
-          submitButton.disabled = false;
-          buttonText.classList.remove("d-none");
+          // Restaurar UI solo en caso de error para permitir reintentar
+          submitButton.disabled = false; // Habilita el botón
+          buttonText.textContent = "Enviar"; // Vuelve el texto del botón a "Enviar"
+          buttonText.classList.remove("d-none"); // Muestra el texto "Enviar"
           if (buttonIcon) {
-            buttonIcon.classList.remove("d-none");
+            buttonIcon.classList.remove("d-none"); // Muestra el icono si existe
           }
-          spinner.classList.add("d-none");
-          loadingText.classList.add("d-none");
+          spinner.classList.add("d-none"); // Oculta el spinner
+          loadingText.classList.add("d-none"); // Oculta el texto "Enviando..."
         }
       )
       .finally(function () {
-        // Este bloque se ejecuta SIEMPRE, ya sea éxito o error.
-        // Si el envío fue exitoso, ya no restauramos el UI del botón aquí,
-        // porque queremos que el botón y los campos se queden deshabilitados.
-        // La lógica de restauración en caso de error ya se movió al bloque 'function(error)'.
+        // Este bloque ahora no hace nada si el envío fue exitoso,
+        // ya que la lógica de restauración para éxito y error se maneja
+        // directamente en sus respectivos bloques .then() y .catch().
+        // Podrías eliminar este bloque 'finally' si quieres, ya que no tiene código útil aquí.
       });
   });
 });
