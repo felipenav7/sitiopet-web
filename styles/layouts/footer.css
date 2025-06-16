@@ -108,7 +108,8 @@
   gap: 10px;
 }
 
-.footer-container-link a {
+.footer-container-link a,
+.footer-container-link i {
   color: #ffffff;
   font-size: 13px;
   text-decoration: none;
