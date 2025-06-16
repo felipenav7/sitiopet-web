@@ -232,19 +232,3 @@ document.addEventListener("DOMContentLoaded", function () {
     showItem(currentItem);
   }, 10000);
 });
-
-// const form = document.getElementById("contact-form");
-
-// form.addEventListener("submit", function (event) {
-//   event.preventDefault();
-
-//   emailjs.sendForm("service_8etcdzj", "template_1phjia1", this).then(
-//     () => {
-//       alert("Mensaje enviado con éxito. ¡Gracias!");
-//       form.reset();
-//     },
-//     (error) => {
-//       alert("Error al enviar el mensaje: " + JSON.stringify(error));
-//     }
-//   );
-// });

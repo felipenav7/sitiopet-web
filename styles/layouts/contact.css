@@ -46,6 +46,10 @@
   margin-bottom: 0rem;
 }
 
+.contact-item p i {
+  margin-right: 3px;
+}
+
 .contact-divider {
   border-color: #929292;
   margin: 20px;

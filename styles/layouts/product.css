@@ -45,19 +45,19 @@
 }
 
 .product-item:nth-child(1) {
-  background-image: url("/assets/images/productosuno.png");
+  background-image: url("/assets/images/alimentoseco.png");
 }
 
 .product-item:nth-child(2) {
-  background-image: url("/assets/images/productosdos.png");
+  background-image: url("/assets/images/alimentohumedo.png");
 }
 
 .product-item:nth-child(3) {
-  background-image: url("/assets/images/productostres.png");
+  background-image: url("/assets/images/accesorio.png");
 }
 
 .product-item:nth-child(4) {
-  background-image: url("/assets/images/productosdos.png");
+  background-image: url("/assets/images/otros.png");
 }
 
 .product-item:hover {

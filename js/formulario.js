@@ -11,9 +11,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // ** TUS IDs REALES DE EMAILJS **
   // Asegúrate de que estos valores coincidan exactamente con los de tu cuenta de EmailJS.
-  const SERVICE_ID = "service_uyyvcvm"; // Tu Service ID de EmailJS (ej. "Gmail")
-  const TEMPLATE_ID = "template_1phjia1"; // Tu Template ID de la plantilla de EmailJS ("Contáctenos")
-  const PUBLIC_KEY = "s0x5mSbli-8I09f0h"; // Tu Public Key (también conocida como User ID) de EmailJS
+  const SERVICE_ID = "service_ai83nji"; // Tu Service ID de EmailJS (ej. "Gmail")
+  const TEMPLATE_ID = "template_f3yqtis"; // Tu Template ID de la plantilla de EmailJS ("Contáctenos")
+  const PUBLIC_KEY = "sGuX6BIXcQayFWDnK"; // Tu Public Key (también conocida como User ID) de EmailJS
 
   // Inicializa la librería de EmailJS con tu Public Key.
   // Esto se hace una única vez al cargar la página.
@@ -56,7 +56,7 @@ document.addEventListener("DOMContentLoaded", function () {
           // Si el envío fue exitoso:
           formMessages.innerHTML = `
             <div class="alert alert-success d-flex align-items-center justify-content-center" role="alert">
-                <span>¡Mensaje enviado con éxito! Te contactaremos pronto.</span> <i class="bi bi-check-circle-fill me-2"></i>
+                <span>¡Mensaje enviado con éxito! Te contactaremos pronto.</span> <i class="bi bi-check-circle-fill ms-1"></i>
             </div>
           `;
 
